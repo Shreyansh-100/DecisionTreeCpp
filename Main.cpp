@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+#include "data_handler.h"
+#include "decision_tree.h"
+#include "dt.h"
 using namespace std;
 
 // Abstract base class
@@ -21,7 +24,7 @@ public:
             cout << "Welcome to the World of Trees. Tread Carefully!" << '\n';
             cout << "==============================================\n\n";
 
-            cout << "Here’s a list of all available functions you can call using their designated option numbers:\n";
+            cout << "Here is a list of all available functions you can call using their designated option numbers:\n";
             cout << "--------------------------------------------------------------\n";
             cout << "-> For uploading your CSV file:           Enter 1" << endl;
             cout << "-> For performing dataset split:          Enter 2" << endl;
@@ -37,6 +40,8 @@ public:
 
 // Class to run the program menu options
 class ToRun : public ToHelp {
+private:
+    tree_metrics dtree;
 public:
     void running() override {
         if (allowed == 1) {
@@ -52,34 +57,37 @@ public:
                 switch (start) {
                     case 1:
                         // push_csv();
+                        dtree.read_csv();
                         this_thread::sleep_for(chrono::milliseconds(500));
                         cout << "\n[Placeholder] Uploaded!!\n";
                         break;
                         
                     case 2:
                         // train_test_split();
+
                         cout << "\n[Placeholder] Performing train-test split...\n";
+                        dtree.train_test_split();
+                        cout<<'\n'<<"Done!"<<'\n';
                         break;
 
                     case 3:
                         
                         cout << "\n[Placeholder] Training model...\n";
-                        //train();
-                        this_thread::sleep_for(chrono::seconds(2));
+                        dtree.train();
                         break;
 
                     case 4:
                         cout << "\n[Placeholder] Making predictions!!\n";
-                        // predict();
+                        dtree.predict();
                         break;
                     case 5:
                         cout<<"\nPredictions:- \n";
-                        //prediction_output();
+                        dtree.prediction_display();
                         break;
 
                     case 6:
                         cout << "\n[Placeholder] Displaying tree metrics\n";
-                        // tree_metrics();
+                        dtree.accuracy();
                         break;
 
                     case 42:

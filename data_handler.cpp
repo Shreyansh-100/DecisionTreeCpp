@@ -30,7 +30,7 @@ void tree_data::read_csv() {
             row_data.push_back(word);
         }
 
-        // Optional: Ignore empty rows
+     
         if (!row_data.empty()) {
             dataframe.push_back(row_data);
         }
@@ -61,10 +61,11 @@ void tree_data::train_test_split() {
 
         train_data.clear();
         test_data.clear();
-
-        feature_dataset=dataframe[0];
-
+        
+        feature_dataset = dataframe[0];
+        feature_dataset.pop_back();  // Remove "target" column name
         dataframe.erase(dataframe.begin());
+
 
         //to perform splitting what we ll do is
         //make a vector of random indices, using those we will go to
@@ -90,9 +91,11 @@ void tree_data::train_test_split() {
             train_data.push_back(dataframe[indices[i]]);
             i++;
         }
+    }
+}
 
 // ---------TESTING------------------
-        cout<<"features: -"<<endl;
+        /*cout<<"features: -"<<endl;
         for(auto i: feature_dataset)
         {
             cout<<i<<" ";
@@ -124,17 +127,11 @@ void tree_data::train_test_split() {
         cout<<endl;
         
 
-    }
+    }*/
 
 //---------------------------------------------
-}
 
-int main(void)
-{
-    tree_data t1;
-    t1.read_csv();
-    t1.train_test_split();
-}
+
 
 
 
