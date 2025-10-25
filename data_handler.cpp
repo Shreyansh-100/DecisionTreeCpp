@@ -4,10 +4,11 @@
 #include <bits/stdc++.h>
 #include <sstream>
 #include <random>
- #include <unistd.h>
+#include <unistd.h>
 using namespace std;
 
 void tree_data::read_csv() {
+    //10: FILE HANDLING USING CLASS METHOD
     fstream iptr;
 
     iptr.open("D:/project/Project_oops/read.csv",ios::in);
@@ -59,6 +60,7 @@ void tree_data::train_test_split() {
             return;
         }
 
+        //11: REUSEABILITY (EVEN FOR DATA POPULATION)
         train_data.clear();
         test_data.clear();
         
@@ -92,16 +94,16 @@ void tree_data::train_test_split() {
             i++;
         }
     }
-}
 
-// ---------TESTING------------------
-        /*cout<<"features: -"<<endl;
+
+//---------TESTING------------------
+        cout<<"features: -"<<endl;
         for(auto i: feature_dataset)
         {
             cout<<i<<" ";
         }
         cout<<endl;
-        cout<<"training:- ";
+        cout<<"training data after split :- "<<endl;
         
          for(int i=0;i<size(train_data);i++)
         {
@@ -113,7 +115,7 @@ void tree_data::train_test_split() {
             cout<<endl;
         }
         cout<<endl;
-        cout<<"test:- ";
+        cout<<"test after split :- "<<endl;
 
          for(int i=0;i<size(test_data);i++)
         {
@@ -127,7 +129,8 @@ void tree_data::train_test_split() {
         cout<<endl;
         
 
-    }*/
+    }
+
 
 //---------------------------------------------
 

@@ -18,7 +18,7 @@ protected:
 
 public:
     void read_csv();
-    void train_test_split() ;
+    void train_test_split() ; //4: ENCAPSULATION: DATAFRAME WHICH WILL BE USED BY METHOD train_test_split IS DEFINED AND EVALUATED WITHIN THE CLASS
 };
 
 #endif // DATA_HANDLER_H
