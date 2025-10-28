@@ -1,4 +1,3 @@
-// data_handler.h
 #ifndef DATA_HANDLER_H
 #define DATA_HANDLER_H
 #include <vector>
@@ -21,4 +20,22 @@ public:
     void train_test_split() ; //4: ENCAPSULATION: DATAFRAME WHICH WILL BE USED BY METHOD train_test_split IS DEFINED AND EVALUATED WITHIN THE CLASS
 };
 
-#endif // DATA_HANDLER_H
+#endif 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

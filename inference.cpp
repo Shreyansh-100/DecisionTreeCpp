@@ -20,7 +20,8 @@ void tree_metrics::prediction_display()
 
 }
 
-void metric_calc(tree_metrics &tm) //FRIEND FUNCTION OF tree_metrics class
+//->FRIEND FUNCTION OF tree_metrics class
+void metric_calc(tree_metrics &tm) 
 {
     if( size(tm.test_data)==0)
     {
@@ -53,7 +54,7 @@ void metric_calc(tree_metrics &tm) //FRIEND FUNCTION OF tree_metrics class
 
     if(size(ref)==2)
     {
-        //Means binary classification model
+        //if binary classification model
         int tp=0;
         int tn=0;
         int fn=0;

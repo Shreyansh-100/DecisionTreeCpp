@@ -8,7 +8,7 @@
 using namespace std;
 
 void tree_data::read_csv() {
-    //10: FILE HANDLING USING CLASS METHOD
+    //->FILE HANDLING DEFINED AS A METHOD
     fstream iptr;
 
     iptr.open("D:/project/Project_oops/read.csv",ios::in);
@@ -60,7 +60,7 @@ void tree_data::train_test_split() {
             return;
         }
 
-        //11: REUSEABILITY (EVEN FOR DATA POPULATION)
+        //-> REUSEABILITY (EVEN FOR DATA POPULATION)
         train_data.clear();
         test_data.clear();
         
@@ -69,9 +69,7 @@ void tree_data::train_test_split() {
         dataframe.erase(dataframe.begin());
 
 
-        //to perform splitting what we ll do is
-        //make a vector of random indices, using those we will go to
-        //to those random indices in df and populate the train and test data accordingly
+       
 
         vector<size_t> indices(size(dataframe));
         iota(indices.begin(),indices.end(),0);
@@ -96,8 +94,7 @@ void tree_data::train_test_split() {
     }
 
 
-//---------TESTING------------------
-        cout<<"features: -"<<endl;
+        cout<<"Features: -"<<endl;
         for(auto i: feature_dataset)
         {
             cout<<i<<" ";
@@ -117,7 +114,7 @@ void tree_data::train_test_split() {
         cout<<endl;
         cout<<"test after split :- "<<endl;
 
-         for(int i=0;i<size(test_data);i++)
+        for(int i=0;i<size(test_data);i++)
         {
             vector <string> temp=test_data[i];
             for(auto j: temp)
@@ -132,7 +129,6 @@ void tree_data::train_test_split() {
     }
 
 
-//---------------------------------------------
 
 
 

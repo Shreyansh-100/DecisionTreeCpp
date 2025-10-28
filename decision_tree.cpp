@@ -21,9 +21,8 @@ double Decision_tree::calculate_gini(vector<vector<string>> subset)
 
     return impurity;
 }
-
-
-double Decision_tree::calculate_gini(vector<vector<string>> leftsub, vector<vector<string>> rightsub) //5: FUNCTION OVERLOADING
+//->FUNCTION OVERLOADING
+double Decision_tree::calculate_gini(vector<vector<string>> leftsub, vector<vector<string>> rightsub) 
 {
     int total_size = leftsub.size() + rightsub.size();
     if (total_size == 0)

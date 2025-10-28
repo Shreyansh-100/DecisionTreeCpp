@@ -4,7 +4,7 @@
 #include "inference.h"
 using namespace std;
 
-// 6: ABSTRACT BASE CLASS WITH PURE VIRTUAL FUNCTION
+// -> ABSTRACT BASE CLASS WITH PURE VIRTUAL FUNCTION
 class Run {
 protected:
     int allowed = 1;
@@ -14,7 +14,7 @@ public:
 };
 
 
-class ToHelp : public Run //1: INHERITANCE: MULTILEVEL INHERITANCE IS USED ACROSS ALL FILES AND CLASSES
+class ToHelp : public Run //-> INHERITANCE: MULTILEVEL INHERITANCE IS USED ACROSS ALL FILES AND CLASSES
 {
 public:
     int option = 0;
@@ -43,7 +43,7 @@ public:
 class ToRun : public ToHelp {
 private:
     tree_metrics dtree;
-    //WE WONT INHERIT dtree because we need to protect its method hence initialize it as a private object
+    //WE WONT INHERIT dtree because we need to protect its methods hence initialize it as a private object
 
 
 public:
@@ -56,15 +56,11 @@ public:
         }
 
     }
-    void running() override { //--------------2: POLYMORPHISM :OVERRIDE A METHOD OF BASE CLASS IN DERIVED, THE METHOD BEHAVES DIFFERENTLY DEPENDING ON WHICH TYPE OF OBJECT CALLS IT
-                                //THIS IS DIFFERENT FROM FUNCTION OVERLOADING !!
-
-       
-
+    void running() override { //-> POLYMORPHISM :OVERRIDE A METHOD OF BASE CLASS IN DERIVED, THE METHOD BEHAVES DIFFERENTLY DEPENDING ON WHICH TYPE OF OBJECT CALLS IT
             int start = 0;
 
             do {
-                //3:ABSTRACTION: INTERFACE LED PROGRAMS HAVE 100% ABSTRACTION, USERS HAVE NO IMPLEMENTATION DETAILS GIVEN TO THEM
+                //->ABSTRACTION: INTERFACE LED PROGRAMS HAVE 100% ABSTRACTION, USERS HAVE NO IMPLEMENTATION DETAILS GIVEN TO THEM
 
                 cout << "\nEnter a valid option: ";
                 cin >> start;
@@ -118,7 +114,7 @@ public:
            
         }
 
-        ~ ToRun() //9: DESTRUCTOR TO PROTECT MEMORY
+        ~ ToRun() //->DESTRUCTOR TO PROTECT MEMORY
         {
             cout<<"\nFreeing Up Resources!!\n";
             this_thread::sleep_for(chrono::milliseconds(1500));
