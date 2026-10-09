@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!backend/
+!backend/main.py
+!backend/requirements.txt
+!Dtree/
+!Dtree/*.cpp
+!Dtree/*.h

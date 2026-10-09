@@ -39,7 +39,7 @@ export default function Terminal() {
         formdata.append("file",file);
 
         try {
-                const response = await axios.post("http://localhost:8000/predict", formdata, {
+                const response = await axios.post(`${(import.meta.env.VITE_API_URL || "").replace(/\/$/, "")}/predict`, formdata, {
                     responseType: "blob",
                 });
 
