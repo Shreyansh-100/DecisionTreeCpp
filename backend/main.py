@@ -3,7 +3,6 @@ import os
 from pathlib import Path
 import subprocess
 import tempfile
-
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -22,13 +21,11 @@ EXECUTABLE = Path(__file__).resolve().parent.parent / 'Dtree' / 'dtree'
 MAX_UPLOAD_BYTES = int(os.getenv('MAX_UPLOAD_BYTES', str(10 * 1024 * 1024)))
 PREDICTION_TIMEOUT_SECONDS = int(os.getenv('PREDICTION_TIMEOUT_SECONDS', '60'))
 
-
 @app.get('/health')
 def health():
     if not EXECUTABLE.is_file() or not os.access(EXECUTABLE, os.X_OK):
         raise HTTPException(503, 'Decision tree engine unavailable')
     return {'status': 'ok'}
-
 
 @app.post('/predict')
 def predict(file: UploadFile = File(...)):

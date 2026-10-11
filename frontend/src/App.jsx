@@ -15,42 +15,6 @@ function App() {
     { label: 'Workflow', href: '#workflow' },
     { label: 'Contact', href: '#contact' }
   ];
-  const [history,setHistory]=useState([
-    "abc",
-    "efg",
-  ]);
-
-  const fileInput = useRef();
-
-  const [command,setCommand]=useState("");
-
-  const handleCommand= (e) =>{
-    if(e.key !='Enter')
-    {
-      return ;
-    }
-
-    const cmd=command.trim().toLowerCase();
-
-    setHistory(prev => [
-      ...prev, //spread operator to maintain array
-      `C:\\dt> ${cmd}`
-    ]);
-
-    if(cmd == "upload")
-    {
-      fileInput.current.click();
-    }
-    else
-    {
-      setHistory( prev=> [
-        ...prev,
-        `Unknown Command: ${cmd}` 
-      ]);
-    }
-    setCommand("");
-  }
-
   
 
   return (

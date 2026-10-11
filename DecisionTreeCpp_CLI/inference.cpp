@@ -52,41 +52,51 @@ void metric_calc(tree_metrics &tm)
     }
     cout<<"Accuracy: "<<(double)( acc/size(tm.predictions))<<endl;
 
-    if(size(ref)==2)
+    set<string> labels;
+    for (int i = 0; i < min(size(tm.test_data), size(tm.predictions)); i++)
     {
-        //if binary classification model
-        int tp=0;
-        int tn=0;
-        int fn=0;
-        int fp=0;
+        labels.insert(tm.test_data[i].back());
+        labels.insert(tm.predictions[i]);
+    }
 
-        for(int i=0;i<size(tm.test_data);i++)
+    if (labels.size() == 2)
+    {
+        // if binary classification model
+        int tp = 0;
+        int tn = 0;
+        int fn = 0;
+        int fp = 0;
+
+        for (int i = 0; i < min(size(tm.test_data), size(tm.predictions)); i++)
         {
-            if(tm.test_data[i].back()=="yes" && tm.predictions[i]=="yes")
+            bool actual_yes = tm.test_data[i].back() == "yes";
+            bool predicted_yes = tm.predictions[i] == "yes";
+
+            if (actual_yes && predicted_yes)
             {
                 tp++;
             }
-            else if(tm.test_data[i].back()=="no" && tm.predictions[i]=="no")
+            else if (!actual_yes && !predicted_yes)
             {
                 tn++;
             }
-            else if(tm.test_data[i].back()=="yes" && tm.predictions[i]=="yes")
+            else if (actual_yes && !predicted_yes)
             {
                 fn++;
             }
-            else if(tm.test_data[i].back()=="no" && tm.predictions[i]=="yes")
+            else if (!actual_yes && predicted_yes)
             {
                 fp++;
             }
         }
 
-        double precision= (double) tp/(tp+fp);
-        double recall= (double) tp/(tp+fn);
-        double f1= (double) 2*precision*recall/(precision+recall);
+        double precision = (tp + fp) ? (double)tp / (tp + fp) : 0.0;
+        double recall = (tp + fn) ? (double)tp / (tp + fn) : 0.0;
+        double f1 = (precision + recall) ? (2.0 * precision * recall) / (precision + recall) : 0.0;
 
-        cout<<"Precision:"<<precision<<endl;
-        cout<<"Recall:"<<recall<<endl;
-        cout<<"F1 Score:"<<f1<<endl;
+        cout << "Precision:" << precision << endl;
+        cout << "Recall:" << recall << endl;
+        cout << "F1 Score:" << f1 << endl;
     }
     return;
 
